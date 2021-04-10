@@ -1,0 +1,1138 @@
+{
+  "intents": [
+    {
+      "intent": "car",
+      "examples": [
+        {
+          "text": "6 lakh"
+        },
+        {
+          "text": "i want a car"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "choice",
+      "examples": [
+        {
+          "text": "I want bike"
+        },
+        {
+          "text": "i want car"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Welcome",
+      "examples": [
+        {
+          "text": "Good afternoon"
+        },
+        {
+          "text": "Good Evening"
+        },
+        {
+          "text": "Good Morning"
+        },
+        {
+          "text": "Hi"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "car",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "11-15",
+          "synonyms": [
+            "11 lakh",
+            "12 lakh",
+            "13 lakh",
+            "14 lakh",
+            "15 lakh"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "1-5",
+          "synonyms": [
+            "1 lakh",
+            "2 lakh",
+            "3 lakh",
+            "4 lakh",
+            "5 lakh"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "16-20",
+          "synonyms": [
+            "16 lakh",
+            "17 lakh",
+            "18 lakh",
+            "19 lakh",
+            "20 lakh"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "21-30",
+          "synonyms": [
+            "21 lakh",
+            "22 lakh",
+            "23 lakh",
+            "24 lakh",
+            "25 lakh",
+            "26 lakh",
+            "27 lakh",
+            "28 lakh",
+            "29 lakh",
+            "30 lakh"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "6-10",
+          "synonyms": [
+            "10 lakh",
+            "6 lakh",
+            "7 lakh",
+            "8 lakh",
+            "9 lakh"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "diesel",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Hacthback",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "petrol",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Sedan",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "SUV",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "choice",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "i want car",
+          "synonyms": [
+            "car"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "want bike",
+          "synonyms": [
+            "bike"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Welcome",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Good afternoon",
+          "synonyms": [
+            "Ga",
+            "gd afternoon"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Good Evening",
+          "synonyms": [
+            "gd evng",
+            "ge"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Good Morning",
+          "synonyms": [
+            "Gm",
+            "gud mrng"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Hi",
+          "synonyms": [
+            "Hello",
+            "Hola"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Enter the price in lakh(Ex: n lakh)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_7_1617973521054",
+      "metadata": {
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "conditions": "#car",
+      "dialog_node": "node_10_1617974408310"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Only Hatchbacks are available"
+              },
+              {
+                "text": "1)Grand i10, Wagonr, Kwid, Tiago"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_10_1617974408310",
+      "conditions": "@car:1-5",
+      "dialog_node": "node_10_1617981767817"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Kia Sonet, Tata Nexon, Mahindra XUV300, Hyundai Venue, Nissan Magnite"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_2_1617982055536",
+      "conditions": "@car:SUV",
+      "dialog_node": "node_10_1617982139857",
+      "previous_sibling": "node_6_1617982136248"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Hyundai Verna, Honda City, New Skoda Rapid, Maruti Ciaz"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_9_1617982985010",
+      "conditions": "@car:Sedan",
+      "dialog_node": "node_10_1617982985010"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Hyundai Creta, Kia Seltos, Hyundai Venue, MG Hector"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_9_1617982985010",
+      "conditions": "@car:SUV",
+      "dialog_node": "node_11_1617982985010",
+      "previous_sibling": "node_10_1617982985010"
+    },
+    {
+      "type": "standard",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_10_1617974408310"
+      },
+      "conditions": "@Welcome",
+      "dialog_node": "node_1_1617972763617",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Hyundai i20"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_9_1617982985010",
+      "conditions": "@car:Hacthback",
+      "dialog_node": "node_12_1617982985010",
+      "previous_sibling": "node_11_1617982985010"
+    },
+    {
+      "type": "standard",
+      "title": "copy 1",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Choose your car model:"
+              },
+              {
+                "text": "(SUV, Sedan, Hatchback)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_8_1617982985009",
+      "conditions": "@car:diesel",
+      "dialog_node": "node_13_1617982985010",
+      "previous_sibling": "node_9_1617982985010"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Hyundai Verna, Honda City"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_13_1617982985010",
+      "conditions": "@car:Sedan",
+      "dialog_node": "node_14_1617982985010"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Hyundai Creta, Kia Seltos, Mahindra Scorpio, Tata Harrier"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_13_1617982985010",
+      "conditions": "@car:SUV",
+      "dialog_node": "node_15_1617982985010",
+      "previous_sibling": "node_14_1617982985010"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Hyundai i20"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_13_1617982985010",
+      "conditions": "@car:Hacthback",
+      "dialog_node": "node_16_1617982985010",
+      "previous_sibling": "node_15_1617982985010"
+    },
+    {
+      "type": "standard",
+      "title": "copy 2",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Choose your fuel type"
+              },
+              {
+                "text": "(Petrol, Diesel)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_10_1617974408310",
+      "conditions": "@car:16-20",
+      "dialog_node": "node_17_1617991786321",
+      "previous_sibling": "node_8_1617982985009"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Choose your car model:"
+              },
+              {
+                "text": "(SUV, Sedan)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_17_1617991786321",
+      "conditions": "@car:petrol",
+      "dialog_node": "node_18_1617991786322"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Hyundai Verna, Hyundai Elantra"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_18_1617991786322",
+      "conditions": "@car:Sedan",
+      "dialog_node": "node_19_1617991786322"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Hyundai Creta, Kia Seltos, Jeep Compass, MG Hector Plus"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_18_1617991786322",
+      "conditions": "@car:SUV",
+      "dialog_node": "node_20_1617991786322",
+      "previous_sibling": "node_19_1617991786322"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Choose your car model:"
+              },
+              {
+                "text": "(SUV, Sedan, Hatchback)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_7_1617981957337",
+      "conditions": "@car:petrol",
+      "dialog_node": "node_2_1617982055536"
+    },
+    {
+      "type": "standard",
+      "title": "copy 2",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Choose your car model:"
+              },
+              {
+                "text": "(SUV, Sedan)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_17_1617991786321",
+      "conditions": "@car:diesel",
+      "dialog_node": "node_22_1617991786322",
+      "previous_sibling": "node_18_1617991786322"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Hyundai Verna, Hyundai Elantra"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_22_1617991786322",
+      "conditions": "@car:Sedan",
+      "dialog_node": "node_23_1617991786322"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Mahindra XUV500, Jeep Compass, \nTata Safari, Isuzu D-Max V-Cross\n"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_22_1617991786322",
+      "conditions": "@car:SUV",
+      "dialog_node": "node_24_1617991786322",
+      "previous_sibling": "node_23_1617991786322"
+    },
+    {
+      "type": "standard",
+      "title": "copy 3",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Choose your fuel type"
+              },
+              {
+                "text": "(Petrol, Diesel)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_10_1617974408310",
+      "conditions": "@car:21-30",
+      "dialog_node": "node_26_1617992101689",
+      "previous_sibling": "node_17_1617991786321"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Choose your car model:"
+              },
+              {
+                "text": "(SUV, Sedan)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_26_1617992101689",
+      "conditions": "@car:petrol",
+      "dialog_node": "node_27_1617992101690"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "New Skoda Superb"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_27_1617992101690",
+      "conditions": "@car:Sedan",
+      "dialog_node": "node_28_1617992101690"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Toyota Fortuner, Hyundai Tucson, Volkswagen T-Roc"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_27_1617992101690",
+      "conditions": "@car:SUV",
+      "dialog_node": "node_29_1617992101690",
+      "previous_sibling": "node_28_1617992101690"
+    },
+    {
+      "type": "standard",
+      "title": "copy 3",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Choose your car model:"
+              },
+              {
+                "text": "(SUV, Sedan)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_26_1617992101689",
+      "conditions": "@car:diesel",
+      "dialog_node": "node_30_1617992101690",
+      "previous_sibling": "node_27_1617992101690"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Hyundai Elantra"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_30_1617992101690",
+      "conditions": "@car:Sedan",
+      "dialog_node": "node_31_1617992101690"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Toyota Fortuner, Ford Endeavour, Citroen C5 Aircross"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_30_1617992101690",
+      "conditions": "@car:SUV",
+      "dialog_node": "node_32_1617992101690",
+      "previous_sibling": "node_31_1617992101690"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Maruti swift, Tata Altroz, Hyundai i20, Suzuki Baleno"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_2_1617982055536",
+      "conditions": "@car:Hacthback",
+      "dialog_node": "node_4_1617982142240",
+      "previous_sibling": "node_10_1617982139857"
+    },
+    {
+      "type": "standard",
+      "title": "copy 1",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Choose your car model:"
+              },
+              {
+                "text": "(SUV, Sedan, Hatchback)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_7_1617981957337",
+      "conditions": "@car:diesel",
+      "dialog_node": "node_4_1617982640357",
+      "previous_sibling": "node_2_1617982055536"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Maruti Dzire, Hyundai Xcent, Honda Amaze, Ford Figo Aspire"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_4_1617982640357",
+      "conditions": "@car:Sedan",
+      "dialog_node": "node_5_1617982640358"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Maruti Dzire, Hyundai Aura, Honda Amaze, Tata tigor"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_2_1617982055536",
+      "conditions": "@car:Sedan",
+      "dialog_node": "node_6_1617982136248"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Kia Sonet, Tata Nexon, Mahindra XUV300, Hyundai Venue, Mahindra Bolero, Honda WR-V"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_4_1617982640357",
+      "conditions": "@car:SUV",
+      "dialog_node": "node_6_1617982640358",
+      "previous_sibling": "node_5_1617982640358"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Enter the price in lakh"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "metadata": {
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "@choice",
+      "dialog_node": "node_7_1617973521054",
+      "previous_sibling": "node_1_1617972763617"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Choose your fuel type"
+              },
+              {
+                "text": "(Petrol, Diesel)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_10_1617974408310",
+      "conditions": "@car:6-10",
+      "dialog_node": "node_7_1617981957337",
+      "previous_sibling": "node_10_1617981767817"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "These are the cars"
+              },
+              {
+                "text": "Maruti swift, Tata Altroz, Hyundai i20, Suzuki Baleno, Ford Figo"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_4_1617982640357",
+      "conditions": "@car:Hacthback",
+      "dialog_node": "node_7_1617982640358",
+      "previous_sibling": "node_6_1617982640358"
+    },
+    {
+      "type": "standard",
+      "title": "copy 1",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Choose your fuel type"
+              },
+              {
+                "text": "(Petrol, Diesel)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_10_1617974408310",
+      "conditions": "@car:11-15",
+      "dialog_node": "node_8_1617982985009",
+      "previous_sibling": "node_7_1617981957337"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Choose your car model:"
+              },
+              {
+                "text": "(SUV, Sedan, Hatchback)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_8_1617982985009",
+      "conditions": "@car:petrol",
+      "dialog_node": "node_9_1617982985010"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "ne budget chusko ra sulli ga"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_7_1617973521054",
+      "disabled": true,
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_10_1617974408310"
+      },
+      "conditions": "@choice:(i want car)",
+      "dialog_node": "response_1_1617973584802",
+      "previous_sibling": "node_10_1617974408310"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I'm here to help you to find the best car based on your preferences"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1617972763617",
+      "conditions": "@Welcome:Hi",
+      "dialog_node": "response_4_1617972796217"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "car aythe mari petrol kavala diesel kavala?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1617974408310",
+      "disabled": true,
+      "conditions": "@choice:(i want car)",
+      "dialog_node": "response_7_1617974645483",
+      "previous_sibling": "node_26_1617992101689"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hi, this is Autobot"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "Automobile suggestions",
+  "language": "en",
+  "description": ""
+}
